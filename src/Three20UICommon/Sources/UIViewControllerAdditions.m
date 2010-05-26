@@ -198,7 +198,11 @@ static NSMutableDictionary* gPopupViewControllers = nil;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)showBars:(BOOL)show animated:(BOOL)animated {
+#if __IPHONE_3_2 <= __IPHONE_OS_VERSION_MAX_ALLOWED
+	[[UIApplication sharedApplication] setStatusBarHidden:!show withAnimation:animated];
+#else
   [[UIApplication sharedApplication] setStatusBarHidden:!show animated:animated];
+#endif
 
   if (animated) {
     [UIView beginAnimations:nil context:NULL];
