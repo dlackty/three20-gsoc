@@ -108,7 +108,7 @@ UIDeviceOrientation TTDeviceOrientation() {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 BOOL TTIsSupportedOrientation(UIInterfaceOrientation orientation) {
-	if (TTisPad() == YES) {
+	if (TTisPad()) {
 		return YES;
 	} else {
 		switch (orientation) {
