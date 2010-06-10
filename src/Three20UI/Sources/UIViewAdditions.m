@@ -452,33 +452,17 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (NSDictionary *)userInfoForKeyboardNotification {
 	CGRect screenFrame = TTScreenBounds();
-#ifdef __IPHONE_3_2
-	if (TTOSVersion() >= 3.2) {
-		CGSize keyboardSize = CGSizeMake(screenFrame.size.width, self.height);
-		CGRect frameBegin = CGRectMake(screenFrame.size.width - self.width,
-																	 screenFrame.size.height, 
-																	 keyboardSize.width, keyboardSize.height);
-		CGRect frameEnd = CGRectMake(screenFrame.size.width - self.width,
-																 screenFrame.size.height - self.height,
-																 keyboardSize.width, keyboardSize.height);
-		
-		return [NSDictionary dictionaryWithObjectsAndKeys:
-						[NSValue valueWithCGRect:frameBegin], UIKeyboardFrameBeginUserInfoKey,
-						[NSValue valueWithCGRect:frameEnd], UIKeyboardFrameEndUserInfoKey,
-						nil];
-	}
-#endif
-  CGRect bounds = CGRectMake(0, 0, screenFrame.size.width, self.height);
-  CGPoint centerBegin = CGPointMake(floor(screenFrame.size.width/2 - self.width/2),
-                                    screenFrame.size.height + floor(self.height/2));
-  CGPoint centerEnd = CGPointMake(floor(screenFrame.size.width/2 - self.width/2),
-                                  screenFrame.size.height - floor(self.height/2));
+	CGRect bounds = CGRectMake(0, 0, screenFrame.size.width, self.height);
+	CGPoint centerBegin = CGPointMake(floor(screenFrame.size.width/2 - self.width/2),
+																		screenFrame.size.height + floor(self.height/2));
+	CGPoint centerEnd = CGPointMake(floor(screenFrame.size.width/2 - self.width/2),
+																	screenFrame.size.height - floor(self.height/2));
 
-  return [NSDictionary dictionaryWithObjectsAndKeys:
-          [NSValue valueWithCGRect:bounds], UIKeyboardBoundsUserInfoKey,
-          [NSValue valueWithCGPoint:centerBegin], UIKeyboardCenterBeginUserInfoKey,
-          [NSValue valueWithCGPoint:centerEnd], UIKeyboardCenterEndUserInfoKey,
-          nil];
+	return [NSDictionary dictionaryWithObjectsAndKeys:
+					[NSValue valueWithCGRect:bounds], UIKeyboardBoundsUserInfoKey,
+					[NSValue valueWithCGPoint:centerBegin], UIKeyboardCenterBeginUserInfoKey,
+					[NSValue valueWithCGPoint:centerEnd], UIKeyboardCenterEndUserInfoKey,
+					nil];
 }
 
 
