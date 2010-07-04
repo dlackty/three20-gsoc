@@ -26,11 +26,18 @@
 // UIApplicationDelegate
 
 - (void)applicationDidFinishLaunching:(UIApplication*)application {
-  TTNavigator* navigator = [TTNavigator navigator];
-  navigator.supportsShakeToReload = YES;
-  navigator.persistenceMode = TTNavigatorPersistenceModeAll;
+  TTURLMap *map;
+  
+	if (TTIsPad()) {
+		TTSplitNavigator *splitNavigator = [TTSplitNavigator splitNavigator];
+    map = splitNavigator.URLMap ;
+	} else {
+		TTNavigator *navigator = [TTNavigator navigator];
+    map = navigator.URLMap;
+    navigator.supportsShakeToReload = YES;
+    navigator.persistenceMode = TTNavigatorPersistenceModeAll;
+	}
 
-  TTURLMap* map = navigator.URLMap;
   [map from:@"*" toViewController:[TTWebController class]];
   [map from:@"tt://catalog" toViewController:[CatalogController class]];
   [map from:@"tt://photoTest1" toViewController:[PhotoTest1Controller class]];
@@ -53,9 +60,14 @@
   [map from:@"tt://scrollViewTest" toViewController:[ScrollViewTestController class]];
   [map from:@"tt://launcherTest" toViewController:[LauncherViewTestController class]];
 
-  if (![navigator restoreViewControllers]) {
-    [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://catalog"]];
-  }
+	if (TTIsPad()) {
+		[[TTSplitNavigator splitNavigator] restoreViewControllersWithDefaultURLs: [NSArray arrayWithObjects: @"tt://catalog", @"tt://catalog", nil]];
+	} else {
+    TTNavigator *navigator = [TTNavigator navigator];
+		if (![navigator restoreViewControllers]) {
+			[navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://catalog"]];
+		}
+	}
 }
 
 - (BOOL)application:(UIApplication*)application handleOpenURL:(NSURL*)URL {
