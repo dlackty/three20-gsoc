@@ -268,6 +268,12 @@
 		6EE736C811849FAB00A35176 /* libThree20Core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE7366C11849C5800A35176 /* libThree20Core.a */; };
 		6EE738A61184ADB800A35176 /* libThree20Network.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE738A31184ADB400A35176 /* libThree20Network.a */; };
 		6EE739D01184BB0400A35176 /* libThree20UI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BEF31F3A0F352DF5000DE5D2 /* libThree20UI.a */; };
+		E33743C311DF250100A2F781 /* UISplitViewControllerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E33743C211DF250100A2F781 /* UISplitViewControllerAdditions.m */; };
+		E33743C511DF250F00A2F781 /* UISplitViewControllerAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E33743C411DF250F00A2F781 /* UISplitViewControllerAdditions.h */; };
+		E33743F811DF264100A2F781 /* TTSplitNavigator.h in Headers */ = {isa = PBXBuildFile; fileRef = E33743F711DF264100A2F781 /* TTSplitNavigator.h */; };
+		E33743FA11DF265000A2F781 /* TTSplitNavigator.m in Sources */ = {isa = PBXBuildFile; fileRef = E33743F911DF265000A2F781 /* TTSplitNavigator.m */; };
+		E337446C11DF75BC00A2F781 /* TTSplitNavigatorWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = E337446B11DF75BC00A2F781 /* TTSplitNavigatorWindow.h */; };
+		E337446E11DF75CA00A2F781 /* TTSplitNavigatorWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = E337446D11DF75CA00A2F781 /* TTSplitNavigatorWindow.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -687,6 +693,12 @@
 		6EE7366611849C5800A35176 /* Three20Core.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Core.xcodeproj; path = ../Three20Core/Three20Core.xcodeproj; sourceTree = SOURCE_ROOT; };
 		6EE7389D1184ADB400A35176 /* Three20Network.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Network.xcodeproj; path = ../Three20Network/Three20Network.xcodeproj; sourceTree = SOURCE_ROOT; };
 		BEF31F3A0F352DF5000DE5D2 /* libThree20UI.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libThree20UI.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E33743C211DF250100A2F781 /* UISplitViewControllerAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UISplitViewControllerAdditions.m; path = Sources/UISplitViewControllerAdditions.m; sourceTree = "<group>"; };
+		E33743C411DF250F00A2F781 /* UISplitViewControllerAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UISplitViewControllerAdditions.h; path = Headers/UISplitViewControllerAdditions.h; sourceTree = "<group>"; };
+		E33743F711DF264100A2F781 /* TTSplitNavigator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSplitNavigator.h; path = Headers/TTSplitNavigator.h; sourceTree = "<group>"; };
+		E33743F911DF265000A2F781 /* TTSplitNavigator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTSplitNavigator.m; path = Sources/TTSplitNavigator.m; sourceTree = "<group>"; };
+		E337446B11DF75BC00A2F781 /* TTSplitNavigatorWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TTSplitNavigatorWindow.h; path = Headers/TTSplitNavigatorWindow.h; sourceTree = "<group>"; };
+		E337446D11DF75CA00A2F781 /* TTSplitNavigatorWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TTSplitNavigatorWindow.m; path = Sources/TTSplitNavigatorWindow.m; sourceTree = "<group>"; };
 		EB9E6C6210B6A8F800DE563C /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -771,6 +783,8 @@
 		6E6457981184D53100F08CB1 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
+				E33743C411DF250F00A2F781 /* UISplitViewControllerAdditions.h */,
+				E33743C211DF250100A2F781 /* UISplitViewControllerAdditions.m */,
 				6E6455541184D4C500F08CB1 /* UINavigationControllerAdditions.h */,
 				6E64567D1184D4DA00F08CB1 /* UINavigationControllerAdditions.m */,
 				6E6455551184D4C500F08CB1 /* UINSObjectAdditions.h */,
@@ -1577,6 +1591,8 @@
 		6E86A8DC118CBF7800662DA5 /* Private */ = {
 			isa = PBXGroup;
 			children = (
+				E337446B11DF75BC00A2F781 /* TTSplitNavigatorWindow.h */,
+				E337446D11DF75CA00A2F781 /* TTSplitNavigatorWindow.m */,
 				6E86A8DA118CBF7500662DA5 /* TTNavigatorWindow.h */,
 				6E86A8EB118CBF8E00662DA5 /* TTNavigatorWindow.m */,
 			);
@@ -1586,6 +1602,8 @@
 		6EDAE9F7118CA5840008133C /* Navigator */ = {
 			isa = PBXGroup;
 			children = (
+				E33743F711DF264100A2F781 /* TTSplitNavigator.h */,
+				E33743F911DF265000A2F781 /* TTSplitNavigator.m */,
 				6EDAE9F5118CA5810008133C /* TTNavigator.h */,
 				6EDAEA01118CA59C0008133C /* TTNavigator.m */,
 				6E86A8DC118CBF7800662DA5 /* Private */,
@@ -1809,6 +1827,9 @@
 				6EDAE9F6118CA5810008133C /* TTNavigator.h in Headers */,
 				6E86A8DB118CBF7500662DA5 /* TTNavigatorWindow.h in Headers */,
 				6E60820311B0C32600C93CD4 /* TTNavigationController.h in Headers */,
+				E33743C511DF250F00A2F781 /* UISplitViewControllerAdditions.h in Headers */,
+				E33743F811DF264100A2F781 /* TTSplitNavigator.h in Headers */,
+				E337446C11DF75BC00A2F781 /* TTSplitNavigatorWindow.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2137,6 +2158,9 @@
 				6EDAEA02118CA59C0008133C /* TTNavigator.m in Sources */,
 				6E86A8EC118CBF8E00662DA5 /* TTNavigatorWindow.m in Sources */,
 				6E60820111B0C31400C93CD4 /* TTNavigationController.m in Sources */,
+				E33743C311DF250100A2F781 /* UISplitViewControllerAdditions.m in Sources */,
+				E33743FA11DF265000A2F781 /* TTSplitNavigator.m in Sources */,
+				E337446E11DF75CA00A2F781 /* TTSplitNavigatorWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2220,7 +2244,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
-				SDKROOT = iphonesimulator3.2;
+				SDKROOT = iphonesimulator4.0;
 			};
 			name = Internal;
 		};
@@ -2294,7 +2318,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
-				SDKROOT = iphonesimulator3.2;
+				SDKROOT = iphonesimulator4.0;
 			};
 			name = Debug;
 		};
@@ -2308,7 +2332,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
-				SDKROOT = iphonesimulator3.2;
+				SDKROOT = iphonesimulator4.0;
 			};
 			name = Release;
 		};

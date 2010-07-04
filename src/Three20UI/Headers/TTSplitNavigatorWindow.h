@@ -14,16 +14,12 @@
 // limitations under the License.
 //
 
-// UI
-#import "Three20UI/Three20UI.h"
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-// Additions
-#import "Three20UI/UIViewAdditions.h"
-#import "Three20UI/UINavigationControllerAdditions.h"
-#import "Three20UI/UISplitViewControllerAdditions.h"
-#import "Three20UI/UITabBarControllerAdditions.h"
-#import "Three20UI/UITableViewAdditions.h"
-#import "Three20UI/UIWebViewAdditions.h"
-#import "Three20UI/UIToolbarAdditions.h"
-#import "Three20UI/UINSStringAdditions.h"
-#import "Three20UI/UINSObjectAdditions.h"
+/**
+ * Provides support for shake gestures. Sends off a reload request to the global navigator
+ * when the user shakes their device.
+ */
+@interface TTSplitNavigatorWindow : UIWindow
+@end

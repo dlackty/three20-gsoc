@@ -62,10 +62,16 @@ static NSString* kNavigatorHistoryImportantKey  = @"TTNavigatorHistoryImportant"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)init {
-  if (self = [super init]) {
-    _URLMap = [[TTURLMap alloc] init];
-    _persistenceMode = TTNavigatorPersistenceModeNone;
+  return [self initWithURLMap: [[TTURLMap alloc] init]];
+}
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (id)initWithURLMap:(TTURLMap*)URLMap {
+  if (self = [super init]) {
+    _URLMap = URLMap;
+    _persistenceMode = TTNavigatorPersistenceModeNone;
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(applicationWillTerminateNotification:)
                                                  name:UIApplicationWillTerminateNotification
@@ -73,6 +79,7 @@ static NSString* kNavigatorHistoryImportantKey  = @"TTNavigatorHistoryImportant"
   }
   return self;
 }
+
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

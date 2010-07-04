@@ -133,6 +133,15 @@
 + (TTBaseNavigator*)globalNavigator;
 + (void)setGlobalNavigator:(TTBaseNavigator*)navigator;
 
+
+/*
+ * A customized init method with URLMap as parameter. This is design for TTSplitNavigator, which has two TTNavigators.
+ * By using init object with this method, it can create TTNavigators with shared URLMap.
+ *
+ * @return a TTNavigator with specified URLMap
+ */
+- (id)initWithURLMap:(TTURLMap*)URLMap;
+
 /**
  * Load and display the view controller with a pattern that matches the URL.
  *

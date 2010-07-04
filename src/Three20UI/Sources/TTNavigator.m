@@ -14,13 +14,13 @@
 // limitations under the License.
 //
 
-#import "Three20UI/TTNavigator.h"
-
 // UI
 #import "Three20UI/TTPopupViewController.h"
 #import "Three20UI/TTSearchDisplayController.h"
 #import "Three20UI/TTTableViewController.h"
 #import "Three20UI/TTNavigationController.h"
+#import "Three20UI/TTNavigator.h"
+#import "Three20UI/TTSplitNavigator.h"
 
 // UI (private)
 #import "Three20UI/private/TTNavigatorWindow.h"
@@ -38,12 +38,18 @@
 // Core
 #import "Three20Core/TTDebug.h"
 
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 UIViewController* TTOpenURL(NSString* URL) {
-  return [[TTNavigator navigator] openURLAction:
-          [[TTURLAction actionWithURLPath:URL]
-           applyAnimated:YES]];
+  // TODO: add runtime support for old iOS
+  if ([TTSplitNavigator isActive]) {
+	return [[TTSplitNavigator splitNavigator].rightNavigator openURLAction:
+					  [[TTURLAction actionWithURLPath:URL]
+					   applyAnimated:YES]];
+  } else {
+	return [[TTNavigator navigator] openURLAction:
+					  [[TTURLAction actionWithURLPath:URL]
+					   applyAnimated:YES]];
+  }
 }
 
 
