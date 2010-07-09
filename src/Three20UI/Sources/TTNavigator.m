@@ -42,13 +42,13 @@
 UIViewController* TTOpenURL(NSString* URL) {
   // TODO: add runtime support for old iOS
   if ([TTSplitNavigator isActive]) {
-	return [[TTSplitNavigator splitNavigator].rightNavigator openURLAction:
-					  [[TTURLAction actionWithURLPath:URL]
-					   applyAnimated:YES]];
+    return [[TTSplitNavigator splitNavigator] openURLAction:
+              [[TTURLAction actionWithURLPath:URL]
+               applyAnimated:YES]];
   } else {
-	return [[TTNavigator navigator] openURLAction:
-					  [[TTURLAction actionWithURLPath:URL]
-					   applyAnimated:YES]];
+    return [[TTNavigator navigator] openURLAction:
+              [[TTURLAction actionWithURLPath:URL]
+               applyAnimated:YES]];
   }
 }
 

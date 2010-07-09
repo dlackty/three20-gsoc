@@ -17,27 +17,31 @@
 // UI
 #import "Three20UINavigator/TTURLPattern.h"
 #import "Three20UINavigator/TTNavigationMode.h"
+#import "Three20UINavigator/TTSplitNavigationTarget.h"
 
 @interface TTURLNavigatorPattern : TTURLPattern {
-  Class             _targetClass;
-  id                _targetObject;
-  TTNavigationMode  _navigationMode;
-  NSString*         _parentURL;
-  NSInteger         _transition;
-  NSInteger         _argumentCount;
+  Class                   _targetClass;
+  id                      _targetObject;
+  TTNavigationMode        _navigationMode;
+  TTSplitNavigationTarget _splitNavigationTarget;
+  NSString*               _parentURL;
+  NSInteger               _transition;
+  NSInteger               _argumentCount;
 }
 
-@property (nonatomic)           Class             targetClass;
-@property (nonatomic, assign)   id                targetObject;
-@property (nonatomic, readonly) TTNavigationMode  navigationMode;
-@property (nonatomic, copy)     NSString*         parentURL;
-@property (nonatomic)           NSInteger         transition;
-@property (nonatomic)           NSInteger         argumentCount;
-@property (nonatomic, readonly) BOOL              isUniversal;
-@property (nonatomic, readonly) BOOL              isFragment;
+@property (nonatomic)           Class                   targetClass;
+@property (nonatomic, assign)   id                      targetObject;
+@property (nonatomic, readonly) TTNavigationMode        navigationMode;
+@property (nonatomic, readonly) TTSplitNavigationTarget splitNavigationTarget;
+@property (nonatomic, copy)     NSString*               parentURL;
+@property (nonatomic)           NSInteger               transition;
+@property (nonatomic)           NSInteger               argumentCount;
+@property (nonatomic, readonly) BOOL                    isUniversal;
+@property (nonatomic, readonly) BOOL                    isFragment;
 
 - (id)initWithTarget:(id)target;
 - (id)initWithTarget:(id)target mode:(TTNavigationMode)navigationMode;
+- (id)initWithTarget:(id)target mode:(TTNavigationMode)navigationMode splitNavigationTarget:(TTSplitNavigationTarget)splitNavigationTarget;
 
 - (void)compile;
 

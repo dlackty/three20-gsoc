@@ -56,6 +56,7 @@ static NSString* kNavigatorHistoryImportantKey  = @"TTNavigatorHistoryImportant"
 @synthesize rootViewController        = _rootViewController;
 @synthesize persistenceExpirationAge  = _persistenceExpirationAge;
 @synthesize persistenceMode           = _persistenceMode;
+@synthesize prefix                    = _prefix;
 @synthesize supportsShakeToReload     = _supportsShakeToReload;
 @synthesize opensExternalURLs         = _opensExternalURLs;
 
@@ -333,7 +334,7 @@ static NSString* kNavigatorHistoryImportantKey  = @"TTNavigatorHistoryImportant"
                                                          isContainer: [controller
                                                                        canContainControllers]
                                                        parentURLPath: parentURLPath
-                                            ? parentURLPath
+                                                                    ? parentURLPath
                                                                     : pattern.parentURL];
 
       if (nil != parentController && parentController != topViewController) {
@@ -687,13 +688,13 @@ static NSString* kNavigatorHistoryImportantKey  = @"TTNavigatorHistoryImportant"
 
   NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
   if (path.count) {
-    [defaults setObject:path forKey:kNavigatorHistoryKey];
-    [defaults setObject:[NSDate date] forKey:kNavigatorHistoryTimeKey];
-    [defaults setObject:[NSNumber numberWithInt:important] forKey:kNavigatorHistoryImportantKey];
+    [defaults setObject:path forKey:[NSString stringWithFormat:@"%@%@", self.prefix, kNavigatorHistoryKey]];
+    [defaults setObject:[NSDate date] forKey:[NSString stringWithFormat:@"%@%@", self.prefix, kNavigatorHistoryTimeKey]];
+    [defaults setObject:[NSNumber numberWithInt:important] forKey:[NSString stringWithFormat:@"%@%@", self.prefix, kNavigatorHistoryImportantKey]];
   } else {
-    [defaults removeObjectForKey:kNavigatorHistoryKey];
-    [defaults removeObjectForKey:kNavigatorHistoryTimeKey];
-    [defaults removeObjectForKey:kNavigatorHistoryImportantKey];
+    [defaults removeObjectForKey:[NSString stringWithFormat:@"%@%@", self.prefix, kNavigatorHistoryKey]];
+    [defaults removeObjectForKey:[NSString stringWithFormat:@"%@%@", self.prefix, kNavigatorHistoryTimeKey]];
+    [defaults removeObjectForKey:[NSString stringWithFormat:@"%@%@", self.prefix, kNavigatorHistoryImportantKey]];
   }
   [defaults synchronize];
 }
@@ -702,9 +703,9 @@ static NSString* kNavigatorHistoryImportantKey  = @"TTNavigatorHistoryImportant"
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (UIViewController*)restoreViewControllers {
   NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-  NSDate* timestamp = [defaults objectForKey:kNavigatorHistoryTimeKey];
-  NSArray* path = [defaults objectForKey:kNavigatorHistoryKey];
-  BOOL important = [[defaults objectForKey:kNavigatorHistoryImportantKey] boolValue];
+  NSDate* timestamp = [defaults objectForKey:[NSString stringWithFormat:@"%@%@", self.prefix, kNavigatorHistoryTimeKey]];
+  NSArray* path = [defaults objectForKey:[NSString stringWithFormat:@"%@%@", self.prefix, kNavigatorHistoryKey]];
+  BOOL important = [[defaults objectForKey:[NSString stringWithFormat:@"%@%@", self.prefix, kNavigatorHistoryImportantKey]] boolValue];
   TTDCONDITIONLOG(TTDFLAG_NAVIGATOR, @"DEBUG RESTORE %@ FROM %@",
                   path, [timestamp formatRelativeTime]);
 
@@ -810,9 +811,9 @@ static NSString* kNavigatorHistoryImportantKey  = @"TTNavigatorHistoryImportant"
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)resetDefaults {
   NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-  [defaults removeObjectForKey:kNavigatorHistoryKey];
-  [defaults removeObjectForKey:kNavigatorHistoryTimeKey];
-  [defaults removeObjectForKey:kNavigatorHistoryImportantKey];
+  [defaults removeObjectForKey:[NSString stringWithFormat:@"%@%@", self.prefix, kNavigatorHistoryKey]];
+  [defaults removeObjectForKey:[NSString stringWithFormat:@"%@%@", self.prefix, kNavigatorHistoryTimeKey]];
+  [defaults removeObjectForKey:[NSString stringWithFormat:@"%@%@", self.prefix, kNavigatorHistoryImportantKey]];
   [defaults synchronize];
 }
 

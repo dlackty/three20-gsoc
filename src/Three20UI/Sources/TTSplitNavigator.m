@@ -67,11 +67,13 @@ static TTSplitNavigator *gSplitNavigator = nil;
                    [[[TTNavigator alloc] initWithURLMap:_URLMap] autorelease],
                    [[[TTNavigator alloc] initWithURLMap:_URLMap] autorelease],
                    nil];
-		
+    
 		for (TTNavigator* navigator in _navigators) {
 			navigator.window = self.window;
 		}
 		
+    self.leftNavigator.prefix = @"TTSplitNavigatorLeft";
+    self.rightNavigator.prefix = @"TTSplitNavigatorRight";
   }
 	
   return self;
@@ -158,9 +160,6 @@ static TTSplitNavigator *gSplitNavigator = nil;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-/**
- * @public
- */
 - (UISplitViewController*) rootViewController {
   if (nil ==  _rootViewController) {
 		_rootViewController = [[UISplitViewController alloc] init]; 
@@ -171,26 +170,17 @@ static TTSplitNavigator *gSplitNavigator = nil;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-/**
- * @public
- */
 - (TTNavigator*) leftNavigator {
 	return [_navigators objectAtIndex:0];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-/**
- * @public
- */
 - (TTNavigator*) rightNavigator {
 	return [_navigators objectAtIndex:1];
 }
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-/**
- * @public
- */
 - (void) restoreViewControllersWithDefaultURLs:(NSArray*)urls {
 	if (![self.leftNavigator restoreViewControllers]) {
 		[self.leftNavigator openURLAction:[TTURLAction actionWithURLPath:[urls objectAtIndex:0]]];
@@ -200,15 +190,25 @@ static TTSplitNavigator *gSplitNavigator = nil;
 		[self.rightNavigator openURLAction:[TTURLAction actionWithURLPath:[urls objectAtIndex:1]]];
 	}
 	
-	TTNavigator *left = self.leftNavigator;
-	UIViewController *leftViewController = left.rootViewController;
-	
 	NSArray *viewControllers = [NSArray arrayWithObjects:self.leftNavigator.rootViewController,
 															self.rightNavigator.rootViewController,nil];
 	
   self.rootViewController.viewControllers = viewControllers;
 	
   [self.window addSubview:self.rootViewController.view];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (UIViewController*)openURLAction:(TTURLAction*)URLAction {
+  TTSplitNavigationTarget splitNavigationTarget = [_URLMap splitNavigationTargetForURL:URLAction.urlPath];
+  if (splitNavigationTarget == TTSplitNavigationTargetLeft) {
+    return [self.leftNavigator openURLAction:URLAction];
+  } else if (splitNavigationTarget == TTSplitNavigationTargetRight) {
+    return [self.rightNavigator openURLAction:URLAction];
+  } else {
+    // splitNavigationTarget == TTSplitNavigationTargetNone cause an error
+    return [self.rightNavigator openURLAction:URLAction];
+  }
 }
 
 @end

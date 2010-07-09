@@ -18,6 +18,7 @@
 #import <UIKit/UIKit.h>
 
 #import "Three20UINavigator/TTNavigationMode.h"
+#import "Three20UINavigator/TTSplitNavigationTarget.h"
 
 @class TTURLNavigatorPattern;
 @class TTURLGeneratorPattern;
@@ -57,8 +58,21 @@
 - (void)from:(NSString*)URL toViewController:(id)target;
 - (void)from:(NSString*)URL toViewController:(id)target selector:(SEL)selector;
 - (void)from:(NSString*)URL toViewController:(id)target transition:(NSInteger)transition;
+- (void)from:(NSString*)URL toViewController:(id)target inSplitView:(TTSplitNavigationTarget)splitNavigationTarget;
 - (void)from:(NSString*)URL parent:(NSString*)parentURL
         toViewController:(id)target selector:(SEL)selector transition:(NSInteger)transition;
+- (void)from:(NSString*)URL parent:(NSString*)parentURL
+        toViewController:(id)target selector:(SEL)selector transition:(NSInteger)transition 
+        inSplitView:(TTSplitNavigationTarget)splitNavigationTarget;
+
+/**
+ * Adds a URL pattern which will create and present a view controller when loaded.
+ *
+ * Controllers created with the "empty history" mode, meaning that it will add into navigation
+ * stack with history emptied.
+ */
+- (void)from:(NSString*)URL toEmptyHistoryViewController:(id)target;
+- (void)from:(NSString*)URL toEmptyHistoryViewController:(id)target selector:(SEL)selector inSplitView:(NSInteger)transition;
 
 /**
  * Adds a URL pattern which will create and present a share view controller when loaded.
@@ -141,6 +155,11 @@
  * Tests if there is a pattern that matches the URL and if so returns its navigation mode.
  */
 - (TTNavigationMode)navigationModeForURL:(NSString*)URL;
+
+/**
+ * Tests if there is a pattern that matches the URL and if so returns its split navigation target.
+ */
+- (TTSplitNavigationTarget)splitNavigationTargetForURL:(NSString*)URL;
 
 /**
  * Tests if there is a pattern that matches the URL and if so returns its transition.

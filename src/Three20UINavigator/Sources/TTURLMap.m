@@ -223,6 +223,15 @@
   [pattern release];
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)from:(NSString *)URL toViewController:(id)target inSplitView:(TTSplitNavigationTarget)splitNavigationTarget {
+  TTURLNavigatorPattern* pattern = [[TTURLNavigatorPattern alloc] initWithTarget:target
+                                                                  mode:TTNavigationModeCreate
+                                                 splitNavigationTarget:splitNavigationTarget];
+  
+  [self addObjectPattern:pattern forURL:URL];
+  [pattern release];
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)from:(NSString*)URL parent:(NSString*)parentURL
@@ -232,6 +241,29 @@
   pattern.parentURL = parentURL;
   pattern.selector = selector;
   pattern.transition = transition;
+  [self addObjectPattern:pattern forURL:URL];
+  [pattern release];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)from:(NSString*)URL parent:(NSString*)parentURL
+        toViewController:(id)target selector:(SEL)selector transition:(NSInteger)transition 
+        inSplitView:(TTSplitNavigationTarget)splitNavigationTarget {
+  TTURLNavigatorPattern* pattern = [[TTURLNavigatorPattern alloc] initWithTarget:target
+                                                                            mode:TTNavigationModeCreate
+                                                           splitNavigationTarget:splitNavigationTarget];
+  pattern.parentURL = parentURL;
+  pattern.selector = selector;
+  pattern.transition = transition;
+  [self addObjectPattern:pattern forURL:URL];
+  [pattern release];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)from:(NSString*)URL toEmptyHistoryViewController:(id)target
+{
+  TTURLNavigatorPattern* pattern = [[TTURLNavigatorPattern alloc] initWithTarget:target
+                                                                            mode:TTNavigationModeEmptyHistroy];
   [self addObjectPattern:pattern forURL:URL];
   [pattern release];
 }
@@ -462,6 +494,12 @@
     }
   }
   return TTNavigationModeExternal;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (TTSplitNavigationTarget)splitNavigationTargetForURL:(NSString*)URL {
+  TTURLNavigatorPattern* pattern = [self matchObjectPattern:[NSURL URLWithString:URL]];
+  return pattern.splitNavigationTarget;
 }
 
 

@@ -21,6 +21,7 @@
 
 @class TTNavigator;
 @class TTURLMap;
+@class TTURLAction;
 @protocol TTNavigatorDelegate;
 
 /**
@@ -54,6 +55,18 @@
  * Try to view controllers hierarchy for both navigators. If not possible, then open with default urls  
  */
 - (void) restoreViewControllersWithDefaultURLs:(NSArray*)urls;
+
+/**
+ * Load and display the view controller with a pattern that matches the URL.
+ *
+ * Each apply* method on the TTURLAction object returns self, allowing you to chain methods
+ * when initializing the object. This allows for a flexible method that requires a shifting set
+ * of parameters that have specific defaults.
+ * 
+ * different from the openURLAction of TTNavigator, the following one will check the split navigation target,
+ * and then forward the URLAction to the target navigtor.
+ */
+- (UIViewController*)openURLAction:(TTURLAction*)URLAction;
 
 /**
  * The window which contains the view controller hiearchy.

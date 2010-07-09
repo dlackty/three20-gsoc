@@ -36,27 +36,39 @@ static NSString* kUniversalURLPattern = @"*";
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 @implementation TTURLNavigatorPattern
 
-@synthesize targetClass     = _targetClass;
-@synthesize targetObject    = _targetObject;
-@synthesize navigationMode  = _navigationMode;
-@synthesize parentURL       = _parentURL;
-@synthesize transition      = _transition;
-@synthesize argumentCount   = _argumentCount;
+@synthesize targetClass           = _targetClass;
+@synthesize targetObject          = _targetObject;
+@synthesize navigationMode        = _navigationMode;
+@synthesize splitNavigationTarget = _splitNavigationTarget;
+@synthesize parentURL             = _parentURL;
+@synthesize transition            = _transition;
+@synthesize argumentCount         = _argumentCount;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithTarget: (id)target
-                mode: (TTNavigationMode)navigationMode {
+                mode: (TTNavigationMode)navigationMode splitNavigationTarget:(TTSplitNavigationTarget)splitNavigationTarget {
   if (self = [super init]) {
     _navigationMode = navigationMode;
-
+    _splitNavigationTarget = splitNavigationTarget;
+    
     if ([target class] == target && navigationMode) {
       _targetClass = target;
     } else {
       _targetObject = target;
     }
   }
+  
+  return self;
+}
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (id)initWithTarget: (id)target
+                mode: (TTNavigationMode)navigationMode {
+  if (self = [self initWithTarget:target mode:navigationMode splitNavigationTarget:TTSplitNavigationTargetNone]) {
+  }
+  
   return self;
 }
 

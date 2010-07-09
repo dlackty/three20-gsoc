@@ -37,6 +37,8 @@
 
   TTNavigatorPersistenceMode  _persistenceMode;
   NSTimeInterval              _persistenceExpirationAge;
+  
+  NSString*                   _prefix;
 
   BOOL                        _delayCount;
 
@@ -104,7 +106,12 @@
  *
  * @default 0
  */
-@property (nonatomic) NSTimeInterval persistenceExpirationAge;
+@property (nonatomic) NSTimeInterval persistenceExpirationAge; 
+ 
+/**
+ * 
+ */
+@property (nonatomic, retain) NSString* prefix;
 
 /**
  * Causes the current view controller to be reloaded when shaking the phone.
