@@ -38,27 +38,27 @@
     navigator.persistenceMode = TTNavigatorPersistenceModeAll;
 	}
 
-  [map from:@"*" toViewController:[TTWebController class]];
-  [map from:@"tt://catalog" toViewController:[CatalogController class]];
-  [map from:@"tt://photoTest1" toViewController:[PhotoTest1Controller class]];
-  [map from:@"tt://photoTest2" toViewController:[PhotoTest2Controller class]];
-  [map from:@"tt://imageTest1" toViewController:[ImageTest1Controller class]];
-  [map from:@"tt://tableTest" toViewController:[TableTestController class]];
-  [map from:@"tt://tableItemTest" toViewController:[TableItemTestController class]];
-  [map from:@"tt://tableControlsTest" toViewController:[TableControlsTestController class]];
-  [map from:@"tt://styledTextTableTest" toViewController:[StyledTextTableTestController class]];
-  [map from:@"tt://tableWithShadow" toViewController:[TableWithShadowController class]];
-  [map from:@"tt://composerTest" toViewController:[MessageTestController class]];
-  [map from:@"tt://searchTest" toViewController:[SearchTestController class]];
-  [map from:@"tt://activityTest" toViewController:[ActivityTestController class]];
-  [map from:@"tt://styleTest" toViewController:[StyleTestController class]];
-  [map from:@"tt://styledTextTest" toViewController:[StyledTextTestController class]];
-  [map from:@"tt://buttonTest" toViewController:[ButtonTestController class]];
-  [map from:@"tt://tabBarTest" toViewController:[TabBarTestController class]];
-  [map from:@"tt://youTubeTest" toViewController:[YouTubeTestController class]];
-  [map from:@"tt://imageTest2" toViewController:[TableImageTestController class]];
-  [map from:@"tt://scrollViewTest" toViewController:[ScrollViewTestController class]];
-  [map from:@"tt://launcherTest" toViewController:[LauncherViewTestController class]];
+  [map from:@"*" toViewController:[TTWebController class] inSplitView:TTSplitNavigationTargetRight];
+  [map from:@"tt://catalog" toViewController:[CatalogController class] inSplitView:TTSplitNavigationTargetRight];
+  [map from:@"tt://photoTest1" toViewController:[PhotoTest1Controller class] inSplitView:TTSplitNavigationTargetRight];
+  [map from:@"tt://photoTest2" toViewController:[PhotoTest2Controller class] inSplitView:TTSplitNavigationTargetRight];
+  [map from:@"tt://imageTest1" toViewController:[ImageTest1Controller class] inSplitView:TTSplitNavigationTargetRight];
+  [map from:@"tt://tableTest" toViewController:[TableTestController class] inSplitView:TTSplitNavigationTargetRight];
+  [map from:@"tt://tableItemTest" toViewController:[TableItemTestController class] inSplitView:TTSplitNavigationTargetRight];
+  [map from:@"tt://tableControlsTest" toViewController:[TableControlsTestController class] inSplitView:TTSplitNavigationTargetRight];
+  [map from:@"tt://styledTextTableTest" toViewController:[StyledTextTableTestController class] inSplitView:TTSplitNavigationTargetRight];
+  [map from:@"tt://tableWithShadow" toViewController:[TableWithShadowController class] inSplitView:TTSplitNavigationTargetRight];
+  [map from:@"tt://composerTest" toViewController:[MessageTestController class] inSplitView:TTSplitNavigationTargetRight];
+  [map from:@"tt://searchTest" toViewController:[SearchTestController class] inSplitView:TTSplitNavigationTargetRight];
+  [map from:@"tt://activityTest" toViewController:[ActivityTestController class] inSplitView:TTSplitNavigationTargetRight];
+  [map from:@"tt://styleTest" toViewController:[StyleTestController class] inSplitView:TTSplitNavigationTargetRight];
+  [map from:@"tt://styledTextTest" toViewController:[StyledTextTestController class] inSplitView:TTSplitNavigationTargetRight];
+  [map from:@"tt://buttonTest" toViewController:[ButtonTestController class] inSplitView:TTSplitNavigationTargetRight];
+  [map from:@"tt://tabBarTest" toViewController:[TabBarTestController class] inSplitView:TTSplitNavigationTargetRight];
+  [map from:@"tt://youTubeTest" toViewController:[YouTubeTestController class] inSplitView:TTSplitNavigationTargetRight];
+  [map from:@"tt://imageTest2" toViewController:[TableImageTestController class] inSplitView:TTSplitNavigationTargetRight];
+  [map from:@"tt://scrollViewTest" toViewController:[ScrollViewTestController class] inSplitView:TTSplitNavigationTargetRight];
+  [map from:@"tt://launcherTest" toViewController:[LauncherViewTestController class] inSplitView:TTSplitNavigationTargetRight];
 
 	if (TTIsPad()) {
 		[[TTSplitNavigator splitNavigator] restoreViewControllersWithDefaultURLs: [NSArray arrayWithObjects: @"tt://catalog", @"tt://catalog", nil]];
