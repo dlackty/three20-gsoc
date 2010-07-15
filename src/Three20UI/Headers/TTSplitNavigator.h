@@ -29,7 +29,7 @@
  */
 
 @interface TTSplitNavigator : NSObject <UISplitViewControllerDelegate> {
-    id<TTNavigatorDelegate> _delegate;
+  id<TTNavigatorDelegate> _delegate;
 	
 	UIWindow*								_window;
 	UISplitViewController*  _rootViewController;

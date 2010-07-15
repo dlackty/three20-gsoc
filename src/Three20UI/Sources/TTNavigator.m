@@ -61,17 +61,21 @@ UIViewController* TTOpenURL(NSString* URL) {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (TTNavigator*)navigator {
-  TTBaseNavigator* navigator = [TTBaseNavigator globalNavigator];
-  if (nil == navigator) {
-    navigator = [[TTNavigator alloc] init];
-    // setNavigator: retains.
-    [super setGlobalNavigator:navigator];
-    [navigator release];
+  if ([TTSplitNavigator isActive]) {
+    return [TTSplitNavigator splitNavigator].leftNavigator;
+  } else {
+    TTBaseNavigator* navigator = [TTBaseNavigator globalNavigator];
+    if (nil == navigator) {
+      navigator = [[TTNavigator alloc] init];
+      // setNavigator: retains.
+      [super setGlobalNavigator:navigator];
+      [navigator release];
+    }
+    // If this asserts, it's likely that you're attempting to use two different navigator
+    // implementations simultaneously. Be consistent!
+    TTDASSERT([navigator isKindOfClass:[TTNavigator class]]);
+    return (TTNavigator*)navigator;
   }
-  // If this asserts, it's likely that you're attempting to use two different navigator
-  // implementations simultaneously. Be consistent!
-  TTDASSERT([navigator isKindOfClass:[TTNavigator class]]);
-  return (TTNavigator*)navigator;
 }
 
 
