@@ -19,6 +19,7 @@
 #import "StyleTestController.h"
 #import "ButtonTestController.h"
 #import "TabBarTestController.h"
+#import "BlankViewController.h"
 
 @implementation AppDelegate
 
@@ -59,9 +60,10 @@
   [map from:@"tt://imageTest2" toViewController:[TableImageTestController class] inSplitView:TTSplitNavigationTargetRight];
   [map from:@"tt://scrollViewTest" toViewController:[ScrollViewTestController class] inSplitView:TTSplitNavigationTargetRight];
   [map from:@"tt://launcherTest" toViewController:[LauncherViewTestController class] inSplitView:TTSplitNavigationTargetRight];
+  [map from:@"tt://blank" toViewController:[BlankViewController class] inSplitView:TTSplitNavigationTargetRight];
 
 	if (TTIsPad()) {
-		[[TTSplitNavigator splitNavigator] restoreViewControllersWithDefaultURLs: [NSArray arrayWithObjects: @"tt://catalog", @"tt://catalog", nil]];
+		[[TTSplitNavigator splitNavigator] restoreViewControllersWithDefaultURLs: [NSArray arrayWithObjects: @"tt://catalog", @"tt://blank", nil]];
 	} else {
     TTNavigator *navigator = [TTNavigator navigator];
 		if (![navigator restoreViewControllers]) {

@@ -1,0 +1,5 @@
+@interface BlankViewController : TTViewController {
+
+}
+
+@end

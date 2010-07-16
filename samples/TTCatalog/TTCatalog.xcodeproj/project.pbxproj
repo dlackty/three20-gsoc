@@ -51,6 +51,7 @@
 		BEF199220F818E720010D36E /* StyledTextTableTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF1991F0F818E720010D36E /* StyledTextTableTestController.m */; };
 		BEF199230F818E720010D36E /* StyledTextTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF199210F818E720010D36E /* StyledTextTestController.m */; };
 		BEF6EC370F280CB300CF4096 /* ScrollViewTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF6EC360F280CB300CF4096 /* ScrollViewTestController.m */; };
+		E3C2F47411F05C420079D70A /* BlankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3C2F47311F05C420079D70A /* BlankViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -278,6 +279,8 @@
 		BEF199210F818E720010D36E /* StyledTextTestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyledTextTestController.m; sourceTree = "<group>"; };
 		BEF6EC350F280CB300CF4096 /* ScrollViewTestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollViewTestController.h; sourceTree = "<group>"; };
 		BEF6EC360F280CB300CF4096 /* ScrollViewTestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollViewTestController.m; sourceTree = "<group>"; };
+		E3C2F47211F05C420079D70A /* BlankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlankViewController.h; sourceTree = "<group>"; };
+		E3C2F47311F05C420079D70A /* BlankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlankViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -493,6 +496,15 @@
 			name = Launcher;
 			sourceTree = "<group>";
 		};
+		E3C2F46E11F05BE90079D70A /* Blank */ = {
+			isa = PBXGroup;
+			children = (
+				E3C2F47211F05C420079D70A /* BlankViewController.h */,
+				E3C2F47311F05C420079D70A /* BlankViewController.m */,
+			);
+			name = Blank;
+			sourceTree = "<group>";
+		};
 		EA1080F1101B37E90098AAC2 /* Photos */ = {
 			isa = PBXGroup;
 			children = (
@@ -618,6 +630,7 @@
 		EA108141101B39510098AAC2 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				E3C2F46E11F05BE90079D70A /* Blank */,
 				EA108148101B39660098AAC2 /* Web Image */,
 				EA108149101B396A0098AAC2 /* YouTube Player */,
 				EA10814F101B398C0098AAC2 /* Activity Labels */,
@@ -940,6 +953,7 @@
 				BE20A49C0FF418B2008791F4 /* TableControlsTestController.m in Sources */,
 				BEC787631040A430005C00CF /* LauncherViewTestController.m in Sources */,
 				6E002567116A6D1A00D1F0CB /* TableWithShadowController.m in Sources */,
+				E3C2F47411F05C420079D70A /* BlankViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
