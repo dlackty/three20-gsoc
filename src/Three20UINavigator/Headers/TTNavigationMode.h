@@ -19,6 +19,6 @@ typedef enum {
   TTNavigationModeCreate,            // a new view controller is created each time
   TTNavigationModeShare,             // a new view controller is created, cached and re-used
   TTNavigationModeModal,             // a new view controller is created and presented modally
-  TTNavigationModeEmptyHistroy,      // a new view controller is created and navigation history is emptied
+  TTNavigationModeEmptyHistory,      // a new view controller is created and navigation history is emptied
   TTNavigationModeExternal,          // an external app will be opened
 } TTNavigationMode;

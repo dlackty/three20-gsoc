@@ -72,7 +72,9 @@
  * stack with history emptied.
  */
 - (void)from:(NSString*)URL toEmptyHistoryViewController:(id)target;
-- (void)from:(NSString*)URL toEmptyHistoryViewController:(id)target selector:(SEL)selector inSplitView:(NSInteger)transition;
+- (void)from:(NSString*)URL toEmptyHistoryViewController:(id)target selector:(SEL)selector;
+- (void)from:(NSString*)URL toEmptyHistoryViewController:(id)target inSplitView:(TTSplitNavigationTarget)splitNavigationTarget;
+- (void)from:(NSString*)URL toEmptyHistoryViewController:(id)target selector:(SEL)selector inSplitView:(TTSplitNavigationTarget)splitNavigationTarget;
 
 /**
  * Adds a URL pattern which will create and present a share view controller when loaded.

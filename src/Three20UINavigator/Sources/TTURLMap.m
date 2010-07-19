@@ -263,11 +263,41 @@
 - (void)from:(NSString*)URL toEmptyHistoryViewController:(id)target
 {
   TTURLNavigatorPattern* pattern = [[TTURLNavigatorPattern alloc] initWithTarget:target
-                                                                            mode:TTNavigationModeEmptyHistroy];
+                                                                            mode:TTNavigationModeEmptyHistory];
   [self addObjectPattern:pattern forURL:URL];
   [pattern release];
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)from:(NSString*)URL toEmptyHistoryViewController:(id)target selector:(SEL)selector;
+{
+  TTURLNavigatorPattern* pattern = [[TTURLNavigatorPattern alloc] initWithTarget:target
+                                                                            mode:TTNavigationModeEmptyHistory];
+  pattern.selector = selector;
+  [self addObjectPattern:pattern forURL:URL];
+  [pattern release];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)from:(NSString*)URL toEmptyHistoryViewController:(id)target inSplitView:(TTSplitNavigationTarget)splitNavigationTarget;
+{
+  TTURLNavigatorPattern* pattern = [[TTURLNavigatorPattern alloc] initWithTarget:target
+                                                                            mode:TTNavigationModeEmptyHistory
+                                                           splitNavigationTarget:splitNavigationTarget];
+  [self addObjectPattern:pattern forURL:URL];
+  [pattern release];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)from:(NSString*)URL toEmptyHistoryViewController:(id)target selector:(SEL)selector inSplitView:(TTSplitNavigationTarget)splitNavigationTarget;
+{
+  TTURLNavigatorPattern* pattern = [[TTURLNavigatorPattern alloc] initWithTarget:target
+                                                                            mode:TTNavigationModeEmptyHistory
+                                                           splitNavigationTarget:splitNavigationTarget];
+  pattern.selector = selector;
+  [self addObjectPattern:pattern forURL:URL];
+  [pattern release];
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)from:(NSString*)URL toSharedViewController:(id)target {
