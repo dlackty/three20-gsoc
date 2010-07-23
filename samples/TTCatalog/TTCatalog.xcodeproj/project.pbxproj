@@ -1007,6 +1007,10 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				HEADER_SEARCH_PATHS = (
+					"\"$(CONFIGURATION_BUILD_DIR)/../three20\"",
+					"$(STDLIB_HEADERS)",
+				);
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				SDKROOT = iphonesimulator4.0;
@@ -1019,6 +1023,10 @@
 			baseConfigurationReference = 6E7F9960118E3A6000443B46 /* App.xcconfig */;
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
+				HEADER_SEARCH_PATHS = (
+					"\"$(CONFIGURATION_BUILD_DIR)/../three20\"",
+					"$(STDLIB_HEADERS)",
+				);
 				INFOPLIST_FILE = Info.plist;
 			};
 			name = Release;
@@ -1032,6 +1040,10 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"\"$(CONFIGURATION_BUILD_DIR)/../three20\"",
+					"$(STDLIB_HEADERS)",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
@@ -1049,6 +1061,10 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"\"$(CONFIGURATION_BUILD_DIR)/../three20\"",
+					"$(STDLIB_HEADERS)",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = DefaultProfileUuid;

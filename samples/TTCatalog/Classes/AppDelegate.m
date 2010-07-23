@@ -32,7 +32,8 @@
   // Basic setup
 	if (TTIsPad()) {
 		TTSplitNavigator *splitNavigator = [TTSplitNavigator splitNavigator];
-    map = splitNavigator.URLMap ;
+    map = splitNavigator.URLMap;
+    splitNavigator.popoverTitle = @"Catalog";
 	} else {
 		TTNavigator *navigator = [TTNavigator navigator];
     map = navigator.URLMap;
