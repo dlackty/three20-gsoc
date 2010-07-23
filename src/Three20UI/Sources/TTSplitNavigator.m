@@ -45,6 +45,7 @@ static TTSplitNavigator *gSplitNavigator = nil;
 
 @synthesize window = _window;
 @synthesize URLMap = _URLMap;
+@synthesize popoverTitle = _popoverTitle;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (TTSplitNavigator*)splitNavigator {
@@ -92,27 +93,25 @@ static TTSplitNavigator *gSplitNavigator = nil;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void) splitViewController: (UISplitViewController*)svc
-      willHideViewController: (UIViewController*)aViewController
-           withBarButtonItem: (UIBarButtonItem*)barButtonItem
-        forPopoverController: (UIPopoverController*)pc {
-	
-  NSString* title = self.leftNavigator.rootViewController.title;
-	
-  // No title means this button isn't going to display at all. Consider setting popoverButtonTitle
-  // if you can't guarantee that your navigation view will have a title.
-  barButtonItem.title = title;
+- (void)splitViewController:(UISplitViewController *)svc 
+     willHideViewController:(UIViewController *)aViewController 
+          withBarButtonItem:(UIBarButtonItem *)barButtonItem 
+       forPopoverController:(UIPopoverController *)pc {
+  // the order of popover title is ivar, leftNavigator's title, and the default value
+  if (_popoverTitle != nil) {
+    barButtonItem.title = _popoverTitle;
+  } else if (self.leftNavigator.rootViewController.title) {
+    barButtonItem.title = self.leftNavigator.rootViewController.title;
+  } else {
+    barButtonItem.title = @"Menu";
+  }
 	
   UIViewController* viewController = self.rightNavigator.rootViewController;
   if ([viewController isKindOfClass:[UINavigationController class]]) {
     UINavigationController* navController = (UINavigationController*)viewController;
     if ([navController.viewControllers count] == 1) {
       [navController.navigationBar.topItem setLeftBarButtonItem:barButtonItem animated:YES];
-    }
-		
-  } else {
-    // Not implemented
-    TTDASSERT(NO);
+    }	
   }
 }
 
@@ -125,10 +124,6 @@ static TTSplitNavigator *gSplitNavigator = nil;
   if ([viewController isKindOfClass:[UINavigationController class]]) {
     UINavigationController* navController = (UINavigationController*)viewController;
     [navController.navigationBar.topItem setLeftBarButtonItem:nil animated:YES];
-		
-  } else {
-    // Not implemented
-    TTDASSERT(NO);
   }
 	
   TT_RELEASE_SAFELY(_popoverController);
@@ -206,7 +201,7 @@ static TTSplitNavigator *gSplitNavigator = nil;
   } else if (splitNavigationTarget == TTSplitNavigationTargetRight) {
     return [self.rightNavigator openURLAction:URLAction];
   } else {
-    // splitNavigationTarget == TTSplitNavigationTargetNone cause an error
+    // splitNavigationTarget == TTSplitNavigationTargetNone causes an error
     return [self.rightNavigator openURLAction:URLAction];
   }
 }

@@ -295,10 +295,7 @@ static NSString* kNavigatorHistoryImportantKey  = @"TTNavigatorHistoryImportant"
       UINavigationController* navController = (UINavigationController*)_rootViewController;
       UIBarButtonItem* topItem = navController.navigationBar.topItem.leftBarButtonItem;
       [navController setViewControllers:[NSArray arrayWithObject:controller] animated:NO];
-      if (topItem) {
-        navController.navigationBar.topItem.leftBarButtonItem = topItem;
-        
-      }
+      navController.navigationBar.topItem.leftBarButtonItem = topItem;
     }
   } else {
     UIViewController* previousSuper = controller.superController;

@@ -39,6 +39,7 @@
 	TTURLMap*								_URLMap;
 	
 	UIPopoverController*		_popoverController;
+	NSString*               _popoverTitle;
 }
 
 /**
@@ -95,6 +96,11 @@
  * The navigator for the right view controller
  */
 @property(nonatomic,readonly) TTNavigator* rightNavigator;
+
+/**
+ * The title for bar button of popover
+ */
+@property(nonatomic,copy) NSString* popoverTitle;
 
 
 @end
