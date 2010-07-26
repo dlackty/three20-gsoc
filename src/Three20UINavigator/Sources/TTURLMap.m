@@ -370,11 +370,84 @@
 }
 
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)from:(NSString*)URL toModalViewController:(id)target presentationStyle:(UIModalPresentationStyle)presentationStyle {
+  TTNavigationMode mode;
+  switch (presentationStyle) {
+    case UIModalPresentationFormSheet:
+      mode = TTNavigationModeFormSheet;
+      break;
+    case UIModalPresentationPageSheet:
+      mode = TTNavigationModePageSheet;
+      break;
+    default:
+      mode = TTNavigationModeModal;
+      break;
+  }
+  
+  TTURLNavigatorPattern* pattern = [[TTURLNavigatorPattern alloc] initWithTarget:target
+                                                                            mode:mode];
+  [self addObjectPattern:pattern forURL:URL];
+  [pattern release];
+}
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)from:(NSString*)URL parent:(NSString*)parentURL
         toModalViewController:(id)target selector:(SEL)selector transition:(NSInteger)transition {
   TTURLNavigatorPattern* pattern = [[TTURLNavigatorPattern alloc] initWithTarget:target
                                                                   mode:TTNavigationModeModal];
+  pattern.parentURL = parentURL;
+  pattern.selector = selector;
+  pattern.transition = transition;
+  [self addObjectPattern:pattern forURL:URL];
+  [pattern release];
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)from:(NSString*)URL toModalViewController:(id)target 
+    selector:(SEL)selector presentationStyle:(UIModalPresentationStyle)presentationStyle {
+  TTNavigationMode mode;
+  switch (presentationStyle) {
+    case UIModalPresentationFormSheet:
+      mode = TTNavigationModeFormSheet;
+      break;
+    case UIModalPresentationPageSheet:
+      mode = TTNavigationModePageSheet;
+      break;
+    default:
+      mode = TTNavigationModeModal;
+      break;
+  }
+  
+  TTURLNavigatorPattern* pattern = [[TTURLNavigatorPattern alloc] initWithTarget:target
+                                                                            mode:mode];
+  pattern.selector = selector;
+  [self addObjectPattern:pattern forURL:URL];
+  [pattern release];
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)from:(NSString*)URL parent:(NSString*)parentURL toModalViewController:(id)target 
+    selector:(SEL)selector transition:(NSInteger)transition presentationStyle:(UIModalPresentationStyle)presentationStyle {
+  TTNavigationMode mode;
+  switch (presentationStyle) {
+    case UIModalPresentationFormSheet:
+      mode = TTNavigationModeFormSheet;
+      break;
+    case UIModalPresentationPageSheet:
+      mode = TTNavigationModePageSheet;
+      break;
+    default:
+      mode = TTNavigationModeModal;
+      break;
+  }
+  
+  TTURLNavigatorPattern* pattern = [[TTURLNavigatorPattern alloc] initWithTarget:target
+                                                                            mode:mode];
   pattern.parentURL = parentURL;
   pattern.selector = selector;
   pattern.transition = transition;

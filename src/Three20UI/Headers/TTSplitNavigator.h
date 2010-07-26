@@ -55,7 +55,7 @@
 /*
  * Try to view controllers hierarchy for both navigators. If not possible, then open with default urls  
  */
-- (void) restoreViewControllersWithDefaultURLs:(NSArray*)urls;
+- (void)restoreViewControllersWithDefaultURLs:(NSArray*)urls;
 
 /**
  * Load and display the view controller with a pattern that matches the URL.

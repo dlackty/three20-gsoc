@@ -256,7 +256,8 @@ static NSString* kNavigatorHistoryImportantKey  = @"TTNavigatorHistoryImportant"
 - (void)presentModalController: (UIViewController*)controller
               parentController: (UIViewController*)parentController
                       animated: (BOOL)animated
-                    transition: (NSInteger)transition {
+                    transition: (NSInteger)transition 
+             presentationStyle: (UIModalPresentationStyle) presentationStyle{
   controller.modalTransitionStyle = transition;
 
   if ([controller isKindOfClass:[UINavigationController class]]) {
@@ -265,6 +266,7 @@ static NSString* kNavigatorHistoryImportantKey  = @"TTNavigatorHistoryImportant"
 
   } else {
     UINavigationController* navController = [[[[self navigationControllerClass] alloc] init] autorelease];
+    navController.modalPresentationStyle = presentationStyle;
     [navController pushViewController: controller
                              animated: NO];
     [parentController presentModalViewController: navController
@@ -843,12 +845,25 @@ static NSString* kNavigatorHistoryImportantKey  = @"TTNavigatorHistoryImportant"
                               mode: (TTNavigationMode)mode
                           animated: (BOOL)animated
                         transition: (NSInteger)transition {
-
-  if (mode == TTNavigationModeModal) {
+  if (mode == TTNavigationModeModal || mode == TTNavigationModePageSheet || mode == TTNavigationModeFormSheet) {
+    UIModalPresentationStyle presentationStyle;
+    switch (mode) {
+      case TTNavigationModeModal:
+        presentationStyle = UIModalPresentationFullScreen;
+        break;
+      case TTNavigationModePageSheet:
+        presentationStyle = UIModalPresentationPageSheet;
+        break;
+      case TTNavigationModeFormSheet:
+        presentationStyle = UIModalPresentationFormSheet;
+        break;
+    }
+    
     [self presentModalController: controller
                 parentController: parentController
                         animated: animated
-                      transition: transition];
+                      transition: transition
+               presentationStyle: presentationStyle];
 
   } else {
     [parentController addSubcontroller: controller

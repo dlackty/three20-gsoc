@@ -95,8 +95,13 @@
 - (void)from:(NSString*)URL toModalViewController:(id)target;
 - (void)from:(NSString*)URL toModalViewController:(id)target selector:(SEL)selector;
 - (void)from:(NSString*)URL toModalViewController:(id)target transition:(NSInteger)transition;
+- (void)from:(NSString *)URL toModalViewController:(id)target presentationStyle:(UIModalPresentationStyle)presentationStyle;
+- (void)from:(NSString*)URL toModalViewController:(id)target
+    selector:(SEL)selector presentationStyle:(UIModalPresentationStyle)presentationStyle;
 - (void)from:(NSString*)URL parent:(NSString*)parentURL
         toModalViewController:(id)target selector:(SEL)selector transition:(NSInteger)transition;
+- (void)from:(NSString*)URL parent:(NSString*)parentURL toModalViewController:(id)target 
+    selector:(SEL)selector transition:(NSInteger)transition presentationStyle:(UIModalPresentationStyle)presentationStyle;
 
 /**
  * Adds a mapping from a class to a generated URL.
