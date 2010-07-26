@@ -58,11 +58,11 @@
   if (self = [super init]) {
     _sendTimer = nil;
 
-    [[TTNavigator navigator].URLMap from:@"tt://compose?to=(composeTo:)"
-                                    toModalViewController:self selector:@selector(composeTo:)];
+    [[TTNavigator navigator].URLMap from:@"tt://compose?to=(composeTo:)" toModalViewController:self 
+                                selector:@selector(composeTo:) presentationStyle:UIModalPresentationPageSheet];
 
-    [[TTNavigator navigator].URLMap from:@"tt://post"
-                                    toViewController:self selector:@selector(post:)];
+    [[TTNavigator navigator].URLMap from:@"tt://post" toModalViewController:self 
+                                selector:@selector(post:) presentationStyle:UIModalPresentationFormSheet];
   }
   return self;
 }

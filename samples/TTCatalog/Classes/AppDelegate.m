@@ -43,7 +43,7 @@
   
   // URLMapping
   if (TTIsPad()) {
-    [map from:@"*" toEmptyHistoryViewController:[TTWebController class] inSplitView:TTSplitNavigationTargetRight];
+    [map from:@"*" toModalViewController:[TTWebController class] presentationStyle:UIModalPresentationPageSheet];
     [map from:@"tt://catalog" toEmptyHistoryViewController:[CatalogController class] inSplitView:TTSplitNavigationTargetRight];
     [map from:@"tt://photoTest1" toEmptyHistoryViewController:[PhotoTest1Controller class] inSplitView:TTSplitNavigationTargetRight];
     [map from:@"tt://photoTest2" toEmptyHistoryViewController:[PhotoTest2Controller class] inSplitView:TTSplitNavigationTargetRight];
