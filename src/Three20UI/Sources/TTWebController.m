@@ -160,7 +160,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)loadView {
   [super loadView];
-
+  
   _webView = [[UIWebView alloc] initWithFrame:TTToolbarNavigationFrame()];
   _webView.delegate = self;
   _webView.autoresizingMask = UIViewAutoresizingFlexibleWidth
@@ -202,6 +202,7 @@
   _toolbar.tintColor = TTSTYLEVAR(toolbarTintColor);
   _toolbar.items = [NSArray arrayWithObjects:
                     _backButton, space, _forwardButton, space, _refreshButton, space, _actionButton, nil];
+  
   [self.view addSubview:_toolbar];
 }
 
@@ -227,6 +228,11 @@
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   [self updateToolbarWithOrientation:self.interfaceOrientation];
+  
+  if (self.parentViewController.modalViewController || self.parentViewController.parentViewController.modalViewController) {
+    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone 
+                                                                                            target:self action:@selector(dismiss)] autorelease];
+  }
 }
 
 
@@ -259,11 +265,16 @@
   return _toolbar;
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)dismiss {
+  [self dismissModalViewControllerAnimated:YES];
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark -
-#pragma mark UTViewController (TTCategory)
+#pragma mark UIViewController (TTCategory)
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
