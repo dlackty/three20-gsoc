@@ -34,6 +34,9 @@
 		TTSplitNavigator *splitNavigator = [TTSplitNavigator splitNavigator];
     map = splitNavigator.URLMap;
     splitNavigator.popoverTitle = @"Catalog";
+    splitNavigator.rightNavigator.supportsShakeToReload = YES;
+    splitNavigator.leftNavigator.persistenceMode = TTNavigatorPersistenceModeAll;
+    splitNavigator.rightNavigator.persistenceMode = TTNavigatorPersistenceModeAll;
 	} else {
 		TTNavigator *navigator = [TTNavigator navigator];
     map = navigator.URLMap;
